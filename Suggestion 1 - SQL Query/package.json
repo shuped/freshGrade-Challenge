@@ -4,7 +4,8 @@
   "description": "freshGrade code challenge - SQL solution for performace improvement",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "knex": "node_modules/knex/knex.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/shuped/freshGrade-Challange/issues"
   },
-  "homepage": "https://github.com/shuped/freshGrade-Challange#readme"
+  "homepage": "https://github.com/shuped/freshGrade-Challange#readme",
+  "dependencies": {
+    "knex": "^0.16.3",
+    "pg": "^7.7.1"
+  }
 }

@@ -9,8 +9,6 @@ knex
   .join('WorkHistory', 'AddressBook.empNo', 'WorkHistory.empNo')
   .join('payroll', 'AddressBook.empNo', 'payroll.empNo')
   .then(rows => {
-    // typechecking the destructed properties could be accomplished with a new
-    // interface containing email, name, yearsEmployed, vacationDays
     rows.map( ({email, name, yearsEmployed, vacationDays}: any) => {
       let newVacationBalance = yearsEmployed + vacationDays;
       let emailBody =  `Dear ${name}\n` +
