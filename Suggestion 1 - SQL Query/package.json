@@ -1,0 +1,19 @@
+{
+  "name": "sqlsolution",
+  "version": "1.0.0",
+  "description": "freshGrade code challenge - SQL solution for performace improvement",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shuped/freshGrade-Challange.git"
+  },
+  "author": "Spencer Shupe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shuped/freshGrade-Challange/issues"
+  },
+  "homepage": "https://github.com/shuped/freshGrade-Challange#readme"
+}
