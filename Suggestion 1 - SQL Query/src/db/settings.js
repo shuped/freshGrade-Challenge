@@ -1,4 +1,4 @@
-{
+module.exports = {
   "user": "freshgradeuser",
   "password": "password",
   "database": "freshgradechallenge",
