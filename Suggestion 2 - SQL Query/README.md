@@ -29,7 +29,7 @@ EmailVacationGrant(
 ```
 it is clear the majority of the computation is spent searching the data models for a particular ID. The greatest improvement would be to query the database and return a data model that allows for immediate computation of the desired operation (i.e. `sendEmail`). This is of course dependent on the time it takes to connect to the external database, but for very large input this method will show the greatest improvement.
 
-This method may not be consistent with existing design patterns or available infastructure, and as such is included in this submission for exemplary purposes only. In production, the query building could be done with higher order functions and more modularity by way of absract helper functions that are used throughout the code base.
+This method may not be consistent with existing design patterns or available infastructure, and as such is included in this submission for exemplary purposes only. In production, the query building could be done with higher order functions and more modularity by way of abstract helper functions that are used throughout the code base.
 
 ### Conclusion
 
