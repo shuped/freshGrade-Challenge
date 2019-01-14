@@ -10,11 +10,13 @@ export function EmailVacationGrant(
 ) {
   // Create hashmaps of addressBook and payroll, indexed by empNo for quick lookup
   let indexedAddressBooks: IAddressBookMap = {}; let indexedPayrolls: IPayrollMap = {};
-  for (let i = 0; i < workHistorys.length; i++) {
+  for (let i = 0; i < addressBooks.length; i++) {
     indexedAddressBooks[addressBooks[i].empNo] = addressBooks[i];
+  }
+  for (let i = 0; i < payrolls.length; i++) {
     indexedPayrolls[payrolls[i].empNo] = payrolls[i];
   }
-
+  
   // I wanted to use the below code for the hashmaps, but for some reason its orders of magnitude slower for large input.
   // I am still investigating why, I suspect its to do with the typescript compile settings
   // let indexedAddressBooks: IAddressBookMap = addressBooks.reduce((acc: {}, addressBook: IAddressBook) => {
