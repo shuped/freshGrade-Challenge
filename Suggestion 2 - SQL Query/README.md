@@ -1,0 +1,30 @@
+# freshGrade Code Challenge
+## Suggestion 2 - SQL Query
+
+### Introduction
+
+Although it was stated the Data Models represented by the interfaces come from an external database and cannot be changed, this implementation is just a simple proof-of-concept of an improved database query should the external database be query-able. It relies on Knex.js, a popular js framework for SQL query building that is agnostic of the underlying sequel language. I created a barebones PSQL database with minimal seeding to test the query and its output.
+
+
+Given the pseudo-code 
+``` js 
+EmailVacationGrant(
+  emailApi: EmailApi,
+  workHistory: WorkHistory[],
+  addressBook: AddressBook[],
+  payroll: Payroll[],
+) {
+  for(int i=0; i<workHistory.length; ++i) {
+    let employee = wh[i];
+    let address = addressBook.find(x => x.empNo==employee.empNo);
+    let payroll = payroll.find(x => x.empNo==employee.empNo);
+ 
+    let newVacationBalance = employee.yearsEmployed + payroll.vacationDays;
+    emailApi.sendEmail(
+      address.email,
+      `Dear ${employee.name}\n` +
+      `based on your ${employee.yearsEmployed} years of employment, you have been granted ${employee.yearsEmployed} days of vacation, bringing your total to ${newVacationBalance}`);
+  }
+}
+```
+it is clear the majority of the computation is spent searching the data models for a particular ID. The fastest improvement would be query the database and return a data model that allows for immediate computation of the desired operation (i.e. `sendEmail`). 

@@ -1,6 +1,6 @@
 import { IEmployeeVacationGrant, IEmailApi } from './interfaces';
-
 import knexClient from './db/dbClient';
+
 // We haved decided to grant bonus vacation to every employee, 1 day per year of experience
 // we need to email them a notice
 function EmailVacationGrant(
