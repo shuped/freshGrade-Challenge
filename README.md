@@ -1,6 +1,6 @@
 # freshGrade-Challange
 
-##Code challenge for freshGrade
+## Code challenge for freshGrade
 
 ### Introduction
 
