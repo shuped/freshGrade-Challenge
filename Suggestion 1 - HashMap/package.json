@@ -4,7 +4,8 @@
   "description": "suggestion 2 for freshgrade challenge, using a hashmap",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require ts-node/register tests/**.ts"
+    "test": "mocha --require ts-node/register tests/**.ts",
+    "test-dist": "mocha dist/tests/**.js"
   },
   "repository": {
     "type": "git",
