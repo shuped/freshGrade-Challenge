@@ -23,26 +23,35 @@ describe('EmailVacationGrant function', () => {
     sinon.restore();
   });
 
-  it('should run faster than originalCode.ts', () => {
-    const startOfEmailVacationGrant = Date.now()
-    const result = EmailVacationGrant(
-      testEmailApi,
-      testData.workHistory,
-      testData.addressBook,
-      testData.payroll
-    );
-    const startOfOriginalCode = Date.now();
-    const orignalResult = originalCode(
-      testEmailApi,
-      testData.workHistory,
-      testData.addressBook,
-      testData.payroll
-    );
-    const now = Date.now();
-    const originalRunTime = now - startOfOriginalCode;
-    const newRunTime = startOfOriginalCode - startOfEmailVacationGrant;
-    const relativeImprovementPercent = (originalRunTime - newRunTime) / originalRunTime * 100;
-    console.log(`Original run time: ${originalRunTime}ms, New run time: ${newRunTime}ms, Realative improvement: ${Math.round(relativeImprovementPercent)}%`);
+  it('should run faster than originalCode.ts', function () {
+    this.timeout(0);
+
+    let newRunTimeTotal = 0;
+    let originalRunTimeTotal = 0;
+    let samples = 100;
+    for (let i = 0; i < samples; i++) {
+      // This all run synchronously for now. Returning a promise may be a valuable feature in the future.
+      const startOfEmailVacationGrant = Date.now()
+      EmailVacationGrant(
+        testEmailApi,
+        testData.workHistory,
+        testData.addressBook,
+        testData.payroll
+      );
+      const startOfOriginalCode = Date.now();
+      originalCode(
+        testEmailApi,
+        testData.workHistory,
+        testData.addressBook,
+        testData.payroll
+      );
+      originalRunTimeTotal += Date.now() - startOfOriginalCode;
+      newRunTimeTotal += startOfOriginalCode - startOfEmailVacationGrant;
+    }
+    const relativeImprovementPercent = (originalRunTimeTotal - newRunTimeTotal) / originalRunTimeTotal * 100;
+    console.log(`Original run time avg: ${originalRunTimeTotal / samples}ms`);
+    console.log(`New run time avg: ${newRunTimeTotal / samples}ms`);
+    console.log(`Realative improvement: ${Math.round(relativeImprovementPercent)}%`);
     expect(relativeImprovementPercent).to.be.greaterThan(0);
     sinon.restore();
   });
