@@ -17,8 +17,7 @@ export function EmailVacationGrant(
     indexedPayrolls[payrolls[i].empNo] = payrolls[i];
   }
   
-  // I wanted to use the below code for the hashmaps, but for some reason its orders of magnitude slower for large input.
-  // I am still investigating why, I suspect its to do with the typescript compile settings
+  // I wanted to use the below code for the hashmaps, but I learned reduce is orders of magnitude slower in this simple situation
   // let indexedAddressBooks: IAddressBookMap = addressBooks.reduce((acc: {}, addressBook: IAddressBook) => {
   //   return { ...acc, [addressBook.empNo]: addressBook }
   // }, {});
