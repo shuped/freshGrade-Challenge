@@ -8,22 +8,13 @@ export function EmailVacationGrant(
   addressBooks: IAddressBook[],
   payrolls: IPayroll[]
 ) {
-  // Create hashmaps of addressBook and payroll, indexed by empNo for quick lookup
-  let indexedAddressBooks: IAddressBookMap = {}; let indexedPayrolls: IPayrollMap = {};
-  for (let i = 0; i < addressBooks.length; i++) {
-    indexedAddressBooks[addressBooks[i].empNo] = addressBooks[i];
-  }
-  for (let i = 0; i < payrolls.length; i++) {
-    indexedPayrolls[payrolls[i].empNo] = payrolls[i];
-  }
-  
-  // I wanted to use the below code for the hashmaps, but I learned reduce is orders of magnitude slower in this simple situation
-  // let indexedAddressBooks: IAddressBookMap = addressBooks.reduce((acc: {}, addressBook: IAddressBook) => {
-  //   return { ...acc, [addressBook.empNo]: addressBook }
-  // }, {});
-  // let indexedPayrolls: IPayrollMap = payrolls.reduce((acc: {}, payroll: IPayroll) => {
-  //   return { ...acc, [payroll.empNo]: payroll }
-  // }, {});
+  // Create hashmaps of addressBook and payroll, indexed by empNo for quick lookup. Object.assign for performace.
+  let indexedAddressBooks: IAddressBookMap = addressBooks.reduce((acc: {}, addressBook: IAddressBook) => {
+    return Object.assign(acc, { [addressBook.empNo]: addressBook })
+  }, {});
+  let indexedPayrolls: IPayrollMap = payrolls.reduce((acc: {}, payroll: IPayroll) => {
+    return Object.assign(acc, { [payroll.empNo]: payroll })
+  }, {});
 
   for (let employee of workHistorys) {
     let { empNo, name, yearsEmployed } = employee;
